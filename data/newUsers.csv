@@ -1,0 +1,10 @@
+FirstName, LastName, Department, PrimaryGroup, SubGroup
+James, Bond, IT, All-IT, IT-Admins
+David, Jordan, Finance, All-Finance, Account-Payable
+Lupe, Montero, Sales, All-Sales, Sales-East
+Veronica, Garcia, HR, All-HR,HR-East
+John, Smith, Sales,All-Sales, Sales-West
+Martin, Smith, Sales, All-Sales,Sales-West
+Jane, Doe, IT,All-IT, IT-Helpdesk
+Jessica, Kim, IT,All-IT, IT-Helpdesk
+Charlie, Brown, Finance, All-Finance, Payroll
