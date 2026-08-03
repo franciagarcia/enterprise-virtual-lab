@@ -57,7 +57,7 @@ Below is a side-by-side comparison of the Active Directory environment, showing 
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
-| <img src="images/active-directory/sales-manual.png" width="400"> | <img src="images/active-directory/sales-automated.png" width="400"> |
+| <img src="images/active-directory/sales-manual.png" width="500"> | <img src="images/active-directory/sales-automated.png" width="400"> |
 
 </details>
 
@@ -66,7 +66,7 @@ Below is a side-by-side comparison of the Active Directory environment, showing 
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
-| <img src="images/active-directory/hr-manual.png" width="400"> | <img src="images/active-directory/hr-automated.png" width="400"> |
+| <img src="images/active-directory/hr-manual.png" width="500"> | <img src="images/active-directory/hr-automated.png" width="400"> |
 
 </details>
 
@@ -75,7 +75,7 @@ Below is a side-by-side comparison of the Active Directory environment, showing 
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
-| <img src="images/active-directory/it-manual.png" width="400"> | <img src="images/active-directory/it-automated.png" width="400"> |
+| <img src="images/active-directory/it-manual.png" width="500"> | <img src="images/active-directory/it-automated.png" width="400"> |
 
 </details>
 
@@ -84,6 +84,6 @@ Below is a side-by-side comparison of the Active Directory environment, showing 
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
-| <img src="images/active-directory/finance-manual.png" width="400"> | <img src="images/active-directory/finance-automated.png" width="400"> |
+| <img src="images/active-directory/finance-manual.png" width="500"> | <img src="images/active-directory/finance-automated.png" width="400"> |
 
 </details>
