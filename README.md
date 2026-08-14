@@ -10,12 +10,11 @@ A hands-on, virtualized enterprise infrastructure built on **Windows Server 2022
 
 Managing enterprise identities manually across multiple departments leads to high operational overhead and human error. This lab demonstrates an end-to-end operational solution for enterprise access management:
 
-* **Infrastructure Setup:** Designing a multi-departmental Active Directory domain structure from scratch (`franclab.org`).
-* **Identity & Access Management:** Structuring Organizational Units (OUs) and Role-Based Access Control (RBAC) Security Groups to reflect organizational hierarchy.
-* **Automated Provisioning Pipeline:** Developing a modular PowerShell script to ingest structured CSV data, validate attributes, create AD accounts, and automatically route users to designated OUs and Security Groups.
+* **Infrastructure Setup:** Designing a multi-departmental Active Directory domain structure from scratch (`franclab.org`) on Windows Server 2022.
+* **GUI Baseline Provisioning:** Manually configuring baseline Organizational Units (OUs), core administrative accounts, and initial Security Groups using the Active Directory Users and Computers (ADUC) GUI interface.
+* **Automated Provisioning Pipeline:** Developing a modular PowerShell script to replace manual GUI workflows—ingesting structured CSV data, validating attributes, creating AD accounts, and automatically routing users to designated OUs and Security Groups.
 
 ---
-
 ## 🛠️ Environment & Tools
 
 | Component | Technical Details |
@@ -29,6 +28,17 @@ Managing enterprise identities manually across multiple departments leads to hig
 
 ---
 
+## 📂 Repository Structure
+
+```text
+Enterprise-Virtual-Lab/
+├── README.md                 # Project documentation & execution guide
+├── Automated-Users.ps1       # Core PowerShell bulk user provisioning script
+├── newUsers.csv              # Structured CSV dataset for user identity ingestion
+└── images/                   # Proof of concept verification screenshots
+```
+---
+
 ## ⚙️ The Automation Pipeline
 
 To streamline user lifecycle operations, the custom PowerShell script ingests a CSV file and fully automates account creation.
@@ -37,18 +47,23 @@ To streamline user lifecycle operations, the custom PowerShell script ingests a 
 The script reads from `C:\lab-assets\newUsers.csv`. The input file must be formatted with the following headers to ensure accurate OU routing and attribute mapping:
 
 ```
-
-FirstName,LastName,Department,PrimaryGroup,SubGroup
-John,Doe,IT,All-IT,IT-Admins
-Jane,Smith,Finance,All-Finance,Payroll
-
+FirstName, LastName, Department, PrimaryGroup, SubGroup
+James, Bond, IT, All-IT, IT-Admins
+David, Jordan, Finance, All-Finance, Account-Payable
+Lupe, Montero, Sales, All-Sales, Sales-East
+Veronica, Garcia, HR, All-HR,HR-East
+John, Smith, Sales,All-Sales, Sales-West
+Martin, Smith, Sales, All-Sales,Sales-West
+Jane, Doe, IT,All-IT, IT-Helpdesk
+Jessica, Kim, IT,All-IT, IT-Helpdesk
+Charlie, Brown, Finance, All-Finance, Payroll
 ```
 
 ### 2. Automated Logic & Execution Steps
 
 When executed, the provisioning script processes records sequentially and performs the following tasks:
 
-1. **Account Attribute Generation:** Dynamically constructs `sAMAccountName` (e.g., `john.doe`) and the User Principal Name (`john.doe@franclab.org`).
+1. **Account Attribute Generation:** Dynamically constructs `samAccountName` (e.g., `john.doe`) and the User Principal Name (`john.doe@franclab.org`).
     
 2. **Dynamic OU Routing:** Identifies the user's target department and provisions the user object into the corresponding Organizational Unit (e.g., `OU=IT,DC=franclab,DC=org`).
     
@@ -76,33 +91,17 @@ When executed, the provisioning script processes records sequentially and perfor
 2. Open PowerShell as an **Administrator**.
     
 3. Run the provisioning script:
-## Usage & Deployment Instructions
-
-### Prerequisites
-
-- Windows Server 2022 configured as a Domain Controller for `franclab.org`.
-    
-- Remote Server Administration Tools (RSAT) installed with administrative privileges.
-    
-- Execution Policy configured to run local scripts (`Set-ExecutionPolicy RemoteSigned`).
-    
-
-### Step-by-Step Execution
-
-1. Place the target CSV file in `C:\lab-assets\newUsers.csv`.
-    
-2. Open PowerShell as an **Administrator**.
-    
-3. Run the provisioning script:
 
 ```powerShell  
 # Execute provisioning script with verbose logging
-.\New-ADUserProvisioning.ps1 -CSVPath "C:\lab-assets\newUsers.csv" -Verbose
+.\Automated-Users.ps1 -CSVPath "C:\lab-assets\newUsers.csv" -Verbose
 ```
 
 
-📸 Proof of Concept & Verification
-Active Directory Provisioning Verification
+## 📸 Proof of Concept & Verification
+
+### Active Directory Provisioning Verification
+
 Below is a comparison of departmental Organizational Units within Active Directory, demonstrating manual base setup alongside accounts dynamically generated and mapped by the PowerShell pipeline:
 
 <details>
@@ -110,6 +109,7 @@ Below is a comparison of departmental Organizational Units within Active Directo
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
+
 | <img src="images/active-directory/sales-manual.png" width="500"> | <img src="images/active-directory/sales-automated.png" width="400"> |
 
 </details>
@@ -119,6 +119,7 @@ Below is a comparison of departmental Organizational Units within Active Directo
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
+
 | <img src="images/active-directory/hr-manual.png" width="500"> | <img src="images/active-directory/hr-automated.png" width="400"> |
 
 </details>
