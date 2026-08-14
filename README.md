@@ -109,7 +109,6 @@ Below is a comparison of departmental Organizational Units within Active Directo
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
-
 | <img src="images/active-directory/sales-manual.png" width="500"> | <img src="images/active-directory/sales-automated.png" width="400"> |
 
 </details>
@@ -119,7 +118,6 @@ Below is a comparison of departmental Organizational Units within Active Directo
 
 | Manual Base Setup | Automated Bulk Provisioning |
 |---|---|
-
 | <img src="images/active-directory/hr-manual.png" width="500"> | <img src="images/active-directory/hr-automated.png" width="400"> |
 
 </details>
