@@ -101,10 +101,9 @@ When executed, the provisioning script processes records sequentially and perfor
 ```
 
 
-
-## 📸 Proof of Concept & Verification
-
-Below is a side-by-side comparison of the Active Directory environment, showing manually created accounts versus the accounts dynamically generated and sorted by the PowerShell script.
+📸 Proof of Concept & Verification
+Active Directory Provisioning Verification
+Below is a comparison of departmental Organizational Units within Active Directory, demonstrating manual base setup alongside accounts dynamically generated and mapped by the PowerShell pipeline:
 
 <details>
 <summary><b>💼 Sales Department</b></summary>
